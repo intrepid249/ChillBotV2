@@ -1,4 +1,5 @@
 ﻿using ChillBotV2.Context;
+using ChillBotV2.Services;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -94,7 +95,7 @@ namespace ChillBotV2
                 }
                 Console.ForegroundColor = color;
 
-                Console.WriteLine($"[{message.Severity.ToString().PadRight(7)}] {message.Source.PadRight(17)}@{DateTimeOffset.UtcNow.ToString("HH:mm:ss dd/mm")}" +
+                Console.WriteLine($"[{message.Severity.ToString().PadRight(7)}] {message.Source.PadRight(7)}@{DateTimeOffset.UtcNow.ToString("HH:mm:ss dd/mm")}\t" +
                     $"{message.Message}{(message.Exception != null ? Environment.NewLine : "")}{message.Exception?.Message ?? ""}");
             }
             finally
@@ -106,10 +107,7 @@ namespace ChillBotV2
         private async Task HandleMessageReceived(SocketMessage rawMsg)
         {
             // Ignore system messages and messages from bots
-            if (!(rawMsg is SocketUserMessage msg)) return;
-            if (msg.Source != MessageSource.User) return;
-
-
+            if (!(rawMsg is SocketUserMessage msg) || msg.Author.IsBot) return;
 
             ICommandContext context;
 
@@ -126,9 +124,9 @@ namespace ChillBotV2
 
             IResult result = await _commands.ExecuteAsync(context, argPos, _services);
 
-            if (result.Error.HasValue &&
-                result.Error.Value != CommandError.UnknownCommand)
-                await context.Channel.SendMessageAsync(result.ToString());
+            //if (result.Error.HasValue &&
+            //    result.Error.Value != CommandError.UnknownCommand)
+            //    await context.Channel.SendMessageAsync(result.ToString());
         }
 
         private IConfiguration BuildConfig()
@@ -150,6 +148,7 @@ namespace ChillBotV2
         private IServiceProvider ConfigureServices()
             => new ServiceCollection()
                 .AddSingleton(_client)
+                .AddSingleton(new ModLogService(_client))
                 .BuildServiceProvider();
     }
 }

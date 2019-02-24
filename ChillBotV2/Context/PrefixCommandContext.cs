@@ -8,7 +8,7 @@ namespace ChillBotV2.Context
     {
         public string Prefix { get; }
 
-        public PrefixCommandContext(String _prefix, DiscordSocketClient client, SocketUserMessage msg) : base(client, msg)
+        public PrefixCommandContext(string _prefix, DiscordSocketClient client, SocketUserMessage msg) : base(client, msg)
         {
             Prefix = _prefix;
         }

@@ -1,0 +1,7 @@
+node_modules/
+package-lock.json
+.idea/
+.vs/
+
+#Ignore the config file so that the token does not get tracked
+bin/Config/config.json

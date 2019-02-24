@@ -1,0 +1,11 @@
+D:\Github\Bots\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.deps.json
+D:\Github\Bots\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.runtimeconfig.json
+D:\Github\Bots\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.runtimeconfig.dev.json
+D:\Github\Bots\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.dll
+D:\Github\Bots\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.pdb
+D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.csprojAssemblyReference.cache
+D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.csproj.CoreCompileInputs.cache
+D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.AssemblyInfoInputs.cache
+D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.AssemblyInfo.cs
+D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.dll
+D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.pdb

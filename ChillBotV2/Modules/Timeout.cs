@@ -10,7 +10,7 @@ using System.Timers;
 
 namespace ChillBotV2.Modules
 {
-    public class TimeoutModule : ModuleBase<PrefixCommandContext>
+    public class Timeout : ModuleBase<PrefixCommandContext>
     {
         private IGuildUser _timedOutUser; // change this to an array??
         private string _timeoutRole = "timeout";
@@ -21,7 +21,7 @@ namespace ChillBotV2.Modules
         [Command("timeout")]
         [Summary("Prevent a user from sending messages and move them to an isolated corner to \'cool down\'")]
         [RequireUserPermission(GuildPermission.Administrator | GuildPermission.ManageGuild)]
-        public async Task Timeout([Summary("@user")] IGuildUser user, [Summary("5")] double time = 5, [Summary("s")] char measure = 's')
+        public async Task TimeoutCommand([Summary("@user")] IGuildUser user, [Summary("5")] double time = 5, [Summary("s")] char measure = 's')
         {
             await Context.Message.DeleteAsync();
 

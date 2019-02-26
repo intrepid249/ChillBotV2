@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ChillBotV2.Modules
 {
-    [AdminPrefix]
+    [AdminPrefix, Remarks("admin")]
+    [Summary("Commands to help with moderation of the server")]
     [RequireUserPermission(Discord.GuildPermission.ManageGuild)]
     public class Admin : ModuleBase<PrefixCommandContext>
     {
@@ -18,6 +19,51 @@ namespace ChillBotV2.Modules
             Global.inviteChannelID = Context.Channel.Id;
             await Context.Message.DeleteAsync();
             var m = await Context.Channel.SendMessageAsync("Initialized invite channel");
+            await Task.Delay(500)
+                .ContinueWith(async task =>
+                {
+                    await m.DeleteAsync();
+                });
+        }
+
+        [RequireOwner]
+        [Command("initMsgLogChannel")]
+        [Summary("Used to initialise the channel message events are logged to\nThis command can only be issued by the owner")]
+        public async Task InitMsgLogChannel()
+        {
+            Global.msgEventLogChannel = Context.Channel;
+            await Context.Message.DeleteAsync();
+            var m = await Context.Channel.SendMessageAsync("Initialized message log channel");
+            await Task.Delay(500)
+                .ContinueWith(async task =>
+                {
+                    await m.DeleteAsync();
+                });
+        }
+
+        [RequireOwner]
+        [Command("initUserLogChannel")]
+        [Summary("Used to initialise the channel message events are logged to\nThis command can only be issued by the owner")]
+        public async Task InitUserLogChannel()
+        {
+            Global.userEventLogChannel = Context.Channel;
+            await Context.Message.DeleteAsync();
+            var m = await Context.Channel.SendMessageAsync("Initialized user log channel");
+            await Task.Delay(500)
+                .ContinueWith(async task =>
+                {
+                    await m.DeleteAsync();
+                });
+        }
+
+        [RequireOwner]
+        [Command("initVoiceLogChannel")]
+        [Summary("Used to initialise the channel message events are logged to\nThis command can only be issued by the owner")]
+        public async Task InitVoiceLogChannel()
+        {
+            Global.voiceEventLogChannel = Context.Channel;
+            await Context.Message.DeleteAsync();
+            var m = await Context.Channel.SendMessageAsync("Initialized voice log channel");
             await Task.Delay(500)
                 .ContinueWith(async task =>
                 {

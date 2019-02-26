@@ -10,6 +10,10 @@ using System.Timers;
 
 namespace ChillBotV2.Modules
 {
+    [AdminPrefix]
+    [Group("timeout"), Remarks("admin")]
+    [Alias("tmo")]
+    [Summary("Commands to prevent voice and message spamming")]
     public class Timeout : ModuleBase<PrefixCommandContext>
     {
         private IGuildUser _timedOutUser; // change this to an array??
@@ -17,10 +21,10 @@ namespace ChillBotV2.Modules
         private System.Timers.Timer _timeoutTimer;
         private ulong _currentVoiceChannel;
 
-        [AdminPrefix]
-        [Command("timeout")]
+        [Command]
         [Summary("Prevent a user from sending messages and move them to an isolated corner to \'cool down\'")]
         [RequireUserPermission(GuildPermission.Administrator | GuildPermission.ManageGuild)]
+        [RequireBotPermission(GuildPermission.ManageRoles | GuildPermission.MoveMembers)]
         public async Task TimeoutCommand([Summary("@user")] IGuildUser user, [Summary("5")] double time = 5, [Summary("s")] char measure = 's')
         {
             await Context.Message.DeleteAsync();
@@ -114,8 +118,7 @@ namespace ChillBotV2.Modules
             await RemoveTimeoutRole(_timedOutUser);
         }
 
-        [AdminPrefix]
-        [Command("removetimeout")]
+        [Command("Remove")]
         [Summary("Lift a user's timeout before the specified time has expired")]
         [RequireUserPermission(GuildPermission.Administrator | GuildPermission.ManageGuild)]
         public async Task RemoveTimeout([Summary("@user")] IGuildUser user)

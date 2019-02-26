@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ChillBotV2.Modules
 {
+    [AdminPrefix]
+    [Remarks("admin, user")]
+    [Summary("Commands that provide utility to members of the server")]
     public class Utilities : ModuleBase<PrefixCommandContext>
     {
         //private readonly CommandService _commands;
@@ -16,6 +19,7 @@ namespace ChillBotV2.Modules
         [AdminPrefix]
         [Command("invite")]
         [RequireUserPermission(GuildPermission.CreateInstantInvite)]
+        [RequireBotPermission(GuildPermission.CreateInstantInvite)]
         public async Task GetInviteCode(IUser user)
         {
             var server_invite = (await Context.Guild.GetInvitesAsync()).Where(inv => inv.ChannelId == Global.inviteChannelID).FirstOrDefault();

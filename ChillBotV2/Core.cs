@@ -95,8 +95,9 @@ namespace ChillBotV2
                 }
                 Console.ForegroundColor = color;
 
-                Console.WriteLine($"[{message.Severity.ToString().PadRight(7)}] {message.Source.PadRight(7)}@{DateTimeOffset.UtcNow.ToString("HH:mm:ss dd/mm")}\t" +
-                    $"{message.Message}{(message.Exception != null ? Environment.NewLine : "")}{message.Exception?.Message ?? ""}");
+                Console.WriteLine($"[{message.Severity.ToString().PadRight(7)}] {message.Source.PadRight(10)}@{DateTimeOffset.UtcNow.ToString("HH:mm:ss dd/mm")}\t" +
+                    $"{message.Message}{(message.Exception != null ? Environment.NewLine : "")}{message.Exception?.Message ?? ""}" +
+                    $"{(message.Exception != null ? Environment.NewLine : "")}{message.Exception?.StackTrace ?? ""}");
             }
             finally
             {
@@ -122,7 +123,7 @@ namespace ChillBotV2
             }
             else return;
 
-            IResult result = await _commands.ExecuteAsync(context, argPos, _services);
+            IResult result = await _commands.ExecuteAsync(context, argPos, _services, MultiMatchHandling.Best);
 
             //if (result.Error.HasValue &&
             //    result.Error.Value != CommandError.UnknownCommand)

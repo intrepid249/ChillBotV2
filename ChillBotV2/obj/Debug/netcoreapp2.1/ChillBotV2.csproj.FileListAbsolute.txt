@@ -9,3 +9,14 @@ D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.Assembly
 D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.AssemblyInfo.cs
 D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.dll
 D:\Github\Bots\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.pdb
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.deps.json
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.runtimeconfig.json
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.runtimeconfig.dev.json
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.dll
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\bin\Debug\netcoreapp2.1\ChillBotV2.pdb
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.csprojAssemblyReference.cache
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.csproj.CoreCompileInputs.cache
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.AssemblyInfoInputs.cache
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.AssemblyInfo.cs
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.dll
+C:\Users\jmccall3\Documents\ChillBotV2\ChillBotV2\obj\Debug\netcoreapp2.1\ChillBotV2.pdb

@@ -2,6 +2,8 @@
 using ChillBotV2.Context;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ChillBotV2.Modules
@@ -11,6 +13,28 @@ namespace ChillBotV2.Modules
     [RequireUserPermission(Discord.GuildPermission.ManageGuild)]
     public class Admin : ModuleBase<PrefixCommandContext>
     {
+        [Command("ban")]
+        [RequireBotPermission(GuildPermission.BanMembers)]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        [Summary("Bans a user from the server")]
+        public async Task BanUser([Summary("The user to be banned")]SocketUser user, [Summary("Number of days to remove messages from this user - must be between [0, 7]")]int pruneDays = 0, 
+            [Summary("The reason of the ban to be written in the audit log"), Remainder]string reason = null)
+        {
+            await Context.Message.DeleteAsync();
+            await (user as SocketGuildUser).BanAsync(pruneDays, reason);
+        }
+
+        [Command("unban")]
+        [RequireBotPermission(GuildPermission.CreateInstantInvite)]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task UnbanUser(SocketGuild guild, ulong userID)
+        {
+            await Context.Message.DeleteAsync();
+            IUser user = (await guild.GetBansAsync()).Where(uid => uid.User.Id == userID).First().User;
+            await guild.RemoveBanAsync(user);
+        }
+
+        // OWNER COMMANDS
         [RequireOwner]
         [Command("initInviteChannel")]
         [Summary("Used to initialise the channel that invites must be created in\nThis command can only be issued by the owner")]

@@ -13,7 +13,18 @@ namespace ChillBotV2.Modules
     [RequireUserPermission(Discord.GuildPermission.ManageGuild)]
     public class Admin : ModuleBase<PrefixCommandContext>
     {
-        [Command("ban")]
+        [Command("Kick")]
+        [RequireBotPermission(GuildPermission.BanMembers)]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        [Summary("Kicks a user from the server")]
+        public async Task KickUser([Summary("The user to be kicked")]SocketUser user, [Summary("The reason of the kick to be written in the audit log"), Remainder]string reason = null)
+        {
+            await Context.Message.DeleteAsync();
+            await (user as SocketGuildUser).KickAsync(reason);
+        }
+
+
+        [Command("Ban")]
         [RequireBotPermission(GuildPermission.BanMembers)]
         [RequireUserPermission(GuildPermission.Administrator)]
         [Summary("Bans a user from the server")]
@@ -24,9 +35,10 @@ namespace ChillBotV2.Modules
             await (user as SocketGuildUser).BanAsync(pruneDays, reason);
         }
 
-        [Command("unban")]
+        [Command("Unban")]
         [RequireBotPermission(GuildPermission.CreateInstantInvite)]
         [RequireUserPermission(GuildPermission.Administrator)]
+        [Summary("Removes a ban from a specified User ID")]
         public async Task UnbanUser(SocketGuild guild, ulong userID)
         {
             await Context.Message.DeleteAsync();

@@ -28,7 +28,7 @@ namespace ChillBotV2.Modules.Moderation
         }
 
         [Command]
-        [Summary("Bulk delete a specified number of messages, filtering by user")]
+        [Summary("Bulk delete a specified amount of messages, filtering by user")]
         public async Task PurgeAsync([Summary("10")] int amount, [Summary("@user")] IUser user)
         {
             await Context.Message.DeleteAsync();
@@ -39,7 +39,7 @@ namespace ChillBotV2.Modules.Moderation
         }
 
         [Command]
-        [Summary("Bulk delete a specified number of messages, filtering by user(s)")]
+        [Summary("Bulk delete a specified amount of messages, filtering by user")]
         public async Task PurgeAsync([Summary("10")] int amount, [Summary("@user...")] params IUser[] users)
         {
             await Context.Message.DeleteAsync();

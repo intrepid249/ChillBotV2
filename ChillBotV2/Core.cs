@@ -1,5 +1,6 @@
 ﻿using ChillBotV2.Context;
 using ChillBotV2.Services;
+using ChillBotV2.System.TypeReaders;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -50,6 +51,9 @@ namespace ChillBotV2
             };
             _client.Log += LogAsync;
             _commands.Log += LogAsync;
+
+            // Add SocketGuild TypeReader
+            _commands.AddTypeReader(typeof(SocketGuild), new SocketGuildTypeReader());
 
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
 

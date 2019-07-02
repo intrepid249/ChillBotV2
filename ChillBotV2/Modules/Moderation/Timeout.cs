@@ -18,7 +18,7 @@ namespace ChillBotV2.Modules
     {
         private IGuildUser _timedOutUser; // change this to an array??
         private string _timeoutRole = "timeout";
-        private System.Timers.Timer _timeoutTimer;
+        private Timer _timeoutTimer;
         private ulong _currentVoiceChannel;
 
         [Command]
@@ -50,7 +50,7 @@ namespace ChillBotV2.Modules
             }
 
             // Create a new timer object that will restore user chat permissions upon completion
-            _timeoutTimer = new System.Timers.Timer(timeInMilliseconds);
+            _timeoutTimer = new Timer(timeInMilliseconds);
             _timeoutTimer.AutoReset = false;
             _timeoutTimer.Elapsed += TimeoutAction;
             _timeoutTimer.Start();
